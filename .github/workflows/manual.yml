@@ -45,11 +45,7 @@ jobs:
         run: |
           echo "Waiting for Render service to be up... Waiting 300 seconds"
           sleep 300
-          #          until curl -sSf https://render-deployment-example-in7h.onrender.com/; do
-          #            echo "Service not available yet. Retrying in 10 seconds..."
-          #            sleep 30
-          #          done
-          echo "Render service is up!"
+          echo "Render service should be up now!"
 
       - name: Run Remote Tests with pytest
         run: |
