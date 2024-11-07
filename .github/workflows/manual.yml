@@ -35,7 +35,22 @@ jobs:
           # Allow higher complexity, longer line length, and ignore minor stylistic warnings
           flake8 . --count --max-complexity=20 --max-line-length=150 --ignore=E127,E266,E303,E305,E502,W292,W504 --statistics
 
-      - name: Test with pytest
+      - name: Run Local Tests with pytest
         run: |
-          pytest -v
-      
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          pytest -v test_ml.py
+
+      - name: Wait for Render Deployment
+        # Assuming the Render service provides a specific URL once it's up.
+        run: |
+          echo "Waiting for Render service to be up..."
+          until curl -sSf https://render-deployment-example-in7h.onrender.com/healthcheck; do
+            echo "Service not available yet. Retrying in 10 seconds..."
+            sleep 10
+          done
+          echo "Render service is up!"
+
+      - name: Run Remote Tests with pytest
+        run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          pytest -v test_main.py
