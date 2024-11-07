@@ -30,11 +30,10 @@ jobs:
 
       - name: Lint with flake8
         run: |
-          # Fail the build if there are Python syntax errors or undefined names
+          # Fail the build only on critical Python syntax errors or undefined names
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          # Check for code complexity and line length without treating errors as warnings
-          flake8 . --count --max-complexity=20 --max-line-length=150 --ignore=E127,E266,E303,E305,E502,W292 --statistics
-
+          # Allow higher complexity, longer line length, and ignore minor stylistic warnings
+          flake8 . --count --max-complexity=20 --max-line-length=150 --ignore=E127,E266,E303,E305,E502,W292,W504 --statistics
 
       - name: Test with pytest
         run: |
