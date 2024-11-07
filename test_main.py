@@ -45,7 +45,7 @@ def test_post_predict_above_50k():
     Test the POST method on /predict endpoint for a prediction of >50K.
     """
     data = {
-        "age": 45,
+        "age": 60,
         "workclass": "Private",
         "fnlgt": 123011,
         "education": "Masters",
@@ -55,9 +55,9 @@ def test_post_predict_above_50k():
         "relationship": "Husband",
         "race": "White",
         "sex": "Male",
-        "capital-gain": 5000,
+        "capital-gain": 500000,
         "capital-loss": 0,
-        "hours-per-week": 60,
+        "hours-per-week": 80,
         "native-country": "United-States"
     }
     response = client.post("/predict", json=data)
