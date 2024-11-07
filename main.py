@@ -26,6 +26,7 @@ class Data(BaseModel):
     hours_per_week: int = Field(..., example=40, alias="hours-per-week")
     native_country: str = Field(..., example="United-States", alias="native-country")
 
+
 encoder_path = os.path.join("model", "encoder.pkl")
 encoder = load_model(encoder_path)
 
@@ -76,12 +77,12 @@ async def post_inference(data: Data):
     return {"result": apply_label(_inference)}
 
 
-# if __name__ == "__main__":
-#     import uvicorn
-#
-#     uvicorn.run(
-#         app,
-#         host="0.0.0.0",  # Listen on all interfaces
-#         port=8000,        # Port number
-#         # reload=True       # Enable auto-reload for development
-#     )
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(
+        app,
+        host="0.0.0.0",  # Listen on all interfaces
+        port=8000,        # Port number
+        # reload=True       # Enable auto-reload for development
+    )
