@@ -37,7 +37,7 @@ def test_post_predict_below_50k():
     }
     response = client.post("/predict", json=data)
     assert response.status_code == 200
-    assert response.json()["prediction"] == "<=50K"
+    assert response.json()["result"] == "<=50K"
 
 
 def test_post_predict_above_50k():
@@ -62,4 +62,4 @@ def test_post_predict_above_50k():
     }
     response = client.post("/predict", json=data)
     assert response.status_code == 200
-    assert response.json()["prediction"] == ">50K"
+    assert response.json()["result"] == ">50K"

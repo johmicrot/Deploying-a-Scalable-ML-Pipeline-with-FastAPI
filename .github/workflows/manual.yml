@@ -44,7 +44,7 @@ jobs:
         # Assuming the Render service provides a specific URL once it's up.
         run: |
           echo "Waiting for Render service to be up... Waiting 300 seconds"
-          sleep 300
+          sleep 100
           echo "Render service should be up now!"
 
       - name: Run Remote Tests with pytest
