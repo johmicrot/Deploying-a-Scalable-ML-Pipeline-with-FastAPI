@@ -5,6 +5,7 @@ from main import app
 
 client = TestClient(app)
 
+
 def test_get_root():
     """
     Test the GET method on the root endpoint.
@@ -12,6 +13,7 @@ def test_get_root():
     response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"message": "Welcome to the Census Income Prediction API!"}
+
 
 def test_post_predict_below_50k():
     """
@@ -36,6 +38,7 @@ def test_post_predict_below_50k():
     response = client.post("/predict", json=data)
     assert response.status_code == 200
     assert response.json()["prediction"] == "<=50K"
+
 
 def test_post_predict_above_50k():
     """

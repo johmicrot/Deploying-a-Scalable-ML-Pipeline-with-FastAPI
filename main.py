@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 from ml.data import apply_label, process_data
 from ml.model import inference, load_model
 
+
 # DO NOT MODIFY
 class Data(BaseModel):
     age: int = Field(..., example=37)
@@ -36,6 +37,7 @@ model = load_model(model_path)
 
 # TODO: create a RESTful API using FastAPI
 app = FastAPI()
+
 
 # TODO: create a GET on the root giving a welcome message
 @app.get("/")
