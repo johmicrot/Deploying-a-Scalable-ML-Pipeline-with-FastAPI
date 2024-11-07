@@ -12,7 +12,7 @@ def test_get_root():
     """
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "Welcome to the Census Income Prediction API!"}
+    assert response.json() == {"message": "Welcome to the Income Prediction API!"}
 
 
 def test_post_predict_below_50k():
