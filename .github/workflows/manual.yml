@@ -44,10 +44,11 @@ jobs:
         # Assuming the Render service provides a specific URL once it's up.
         run: |
           echo "Waiting for Render service to be up..."
-          until curl -sSf https://render-deployment-example-in7h.onrender.com/; do
-            echo "Service not available yet. Retrying in 10 seconds..."
-            sleep 30
-          done
+          sleep 300
+#          until curl -sSf https://render-deployment-example-in7h.onrender.com/; do
+#            echo "Service not available yet. Retrying in 10 seconds..."
+#            sleep 30
+#          done
           echo "Render service is up!"
 
       - name: Run Remote Tests with pytest
