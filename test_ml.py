@@ -29,7 +29,7 @@ def data():
     """
     Fixture to load the data only once for all tests.
     """
-    data_path = os.path.join("../data", "census.csv")
+    data_path = os.path.join("data", "census.csv")
     df = pd.read_csv(data_path)
     return df
 
